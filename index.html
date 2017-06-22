@@ -5,14 +5,19 @@
     <title></title>
 
       <script src="./assets/libs/angular.min.js" charset="utf-8"></script>
+      <script src="./assets/libs/angular-ui-router.min.js" charset="utf-8"></script>
 
   </head>
   <body>
       <h1>faça login</h1>
-      <div ng-view></div>
+      <ul>
+        <li><ui-sref="#/my-questions">Login</a></li>
+      </ul>
+       <ui-view style="border: 1px solid black;"></ui-view>
 
 
-      <script src="./app/app.js"></script>
-      <script src="./app/routes.js"></script>
+      <script src="./app/app.js" charset="utf-8"></script>
+      <script src="./app/routes.js" charset="utf-8"></script>
+
   </body>
 </html>
