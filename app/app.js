@@ -1,6 +1,18 @@
-const app = angular.module('jQuest',['ui.router']);
+const app = angular.module('jQuest',['ngRoute'])
 
-app.controller('MyQuestionsCtrl', function($rootScope, $location)
+.controller('MyQuestionsCtrl', function($rootScope, $location)
 {
    $rootScope.activetab = $location.path();
+})
+
+.controller('RegisterCtrl', function($scope, $location)
+{
+   $scope.nome = 'ayy lmao';
+})
+
+.directive('jqNavbar', function() {
+  return {
+    restrict: 'E',
+    templateUrl : 'app/components/shared/navbar.html'
+  };
 });
