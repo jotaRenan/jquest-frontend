@@ -2,6 +2,7 @@ app.config(['$routeProvider','$locationProvider',
   function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
     $routeProvider
+
     // Rota para a página About
     .when('/login', {
       templateUrl: './app/components/login/login.html',
@@ -22,6 +23,11 @@ app.config(['$routeProvider','$locationProvider',
     .when('/insert-question', {
       templateUrl: 'templates/insert-question.html',
       controller: 'InsertQuestionCtrl',
+    })
+    // Rota para a página de listagem de perguntas
+    .when('/list-questions', {
+      templateUrl: './app/components/list-questions/list-questions.html',
+      controller: 'ListQuestionsCtrl',
     })
     // Rota para a página Avengers
     .when('/edit-question', {
@@ -74,7 +80,7 @@ app.config(['$routeProvider','$locationProvider',
       controller: 'DissertiveQuestionsCorrectionCtrl',
     })
       .otherwise({
-        redirectTo : '/'
+        redirectTo : '/list-questions'
         });
   } ]);
 
