@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="./app/components/user-profile/user-profile.css">
+<section class="flex-container">
+  <!-- Main information -->
+  <div class="flex-item">
+    <header>
+      <h2>{{user.username}}</h2>
+    </header>
+    <p><span class="bold">Questões respondidas: </span>{{user.answeredQuestions}}</p>
+    <p><span class="bold">Taxa de acertos: </span>{{user.correctAnswersRatio * 100}}%</p>
+    <p><span class="bold">Usuário desde: </span>{{user.entryDate}}</p>
+    <button type="button" name="button">Editar Perfil</button>
+  </div>
+
+  <!-- Performance -->
+  <div class="flex-item">
+    <!-- TODO: plot user's performance over time -->
+    <figure>
+      <img src="http://support.sas.com/documentation/cdl/en/graphref/69717/HTML/default/images/gplovrl1.png" alt="user perfomance">
+    </figure>
+  </div>
+
+  <!-- Questions created by user and discussions -->
+  <div class="flex-item">
+    <!-- User's own quesions -->
+    <div class="">
+      <h3>Perguntas do usuário</h3>
+      <ul ng-show="user.ownQuestions.length > 0">
+        <li ng-repeat="question in user.ownQuestions">
+          <a ng-href="question/{{question.id}}">{{question.shortDesc}}</a>
+        </li>
+      </ul>
+      <p ng-show="user.ownQuestions.length === 0" class="italics">Parece que esse usuário não criou perguntas... 😢</p>
+    </div>
+    <!-- User's discussions -->
+    <div class="">
+      <h3>Participação em discussões</h3>
+      <ul ng-show="user.latestPosts.length > 0">
+        <li ng-repeat="post in latestPosts">
+          <a ng-href="question/comment/{{post.id}}"><!-- TODO: get question shortDesc--></a>
+        </li>
+      </ul>
+      <p ng-show="user.latestPosts.length === 0">Parece que esse usuário nunca comentou em nada 😢</p>
+    </div>
+  </div>
+</section>

@@ -10,18 +10,19 @@
     <script src="./assets/libs/angular-route.min.js" charset="utf-8"></script>
     <base href="/jquest-frontend/">
 	</head>
-	<body>
+	<body ng-controller="MainCtrl as ctrl">
 
 		<jq-navbar></jq-navbar>
 
 		<!-- Banner -->
-			<section id="banner">
+			<section id="banner" ng-hide="hideLogin">
 				<div class="inner">
           <h1>Faça login</h1>
           <label>Email<input type="text" name="user-name" value=""></label>
           <label>Senha<input type="password" name="senha" value=""></label>
           <a href="login"><button type="button" name="button">Entrar</button></a>
 					<p>ou <a href="register">registre-se</a></p>
+					<button type="button" name="button" ng-click="close()">fecha saporra</button>
 				</div>
 			</section>
 

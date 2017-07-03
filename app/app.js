@@ -45,6 +45,29 @@ const app = angular.module('jQuest',['ngRoute'])
   ]
 })
 
+.controller('MainCtrl', function($scope, $log) {
+  // TODO: add verification
+  const temp = sessionStorage.getItem('hideLogin');
+  $scope.hideLogin = !!temp;
+  $scope.close = () => {
+    $scope.hideLogin = true;
+    sessionStorage.setItem('hideLogin', 'true');
+  }
+})
+
+.controller('UserProfileCtrl', function($scope) {
+  $scope.user = {
+    username : 'jotaRenan',
+    answeredQuestions : 9001,
+    correctAnswersRatio : 1.01,
+    entryDate : '03-07-2017',
+    ownQuestions : [ { id : 1007, shortDesc : 'Como faço para comer caqui?' },
+      { id : 1008, shortDesc : 'Como faço para ganhar seguidores?'}
+    ],
+    latestPosts: [],
+  }
+})
+
 .directive('jqNavbar', function() {
   return {
     restrict: 'E',

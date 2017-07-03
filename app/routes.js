@@ -39,9 +39,9 @@ app.config(['$routeProvider','$locationProvider',
       templateUrl: 'templates/question.html',
       controller: 'QuestionCtrl',
     })
-    // Rota para a página Avengers
+    // Rota para a página Perfil de usuário
     .when('/user-profile', {
-      templateUrl: 'templates/user-profile.html',
+      templateUrl: './app/components/user-profile/user-profile.html',
       controller: 'UserProfileCtrl',
     })
     // Rota para a página Avengers
