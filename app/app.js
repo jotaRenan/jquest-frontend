@@ -93,7 +93,8 @@ const app = angular.module('jQuest',['ngRoute'])
   }
 })
 
-.controller('UserProfileCtrl', function($scope) {
+.controller('UserProfileCtrl', function($scope, $routeParams) {
+  // TODO: send the requests to the backend so it returns data of a user given its Id ($routeParams.userId)
   $scope.user = {
     username : 'jotaRenan',
     answeredQuestions : 9001,

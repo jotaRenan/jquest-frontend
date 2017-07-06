@@ -40,7 +40,7 @@ app.config(['$routeProvider','$locationProvider',
       controller: 'DiscussionCtrl',
     })
     // Rota para a página User Profile
-    .when('/user-profile', {
+    .when('/user-profile/:userId', {
       templateUrl: './app/components/user-profile/user-profile.html',
       controller: 'UserProfileCtrl',
     })
