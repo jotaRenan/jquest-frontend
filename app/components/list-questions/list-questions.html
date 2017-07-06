@@ -2,7 +2,7 @@
   <h1>Perguntas</h1>
   <div class="" ng-repeat="question in questions">
     <div class="questao-enunciado">
-      <h4>{{question.heading}}</h4>
+      <h4><a ng-href="question/{{question.id}}">{{question.heading}}</a></h4>
     </div>
     <div class="questao-opcoes" ng-show="question.isMultipleChoice">
       <div class="" ng-repeat="opc in question.alternatives">

@@ -35,9 +35,9 @@ app.config(['$routeProvider','$locationProvider',
       controller: 'EditQuestionCtrl',
     })
     // Rota para a página Question
-    .when('/question', {
-      templateUrl: 'templates/question.html',
-      controller: 'QuestionCtrl',
+    .when('/question/:questionId', {
+      templateUrl: './app/components/discussion/discussion.html',
+      controller: 'DiscussionCtrl',
     })
     // Rota para a página User Profile
     .when('/user-profile', {
@@ -67,7 +67,7 @@ app.config(['$routeProvider','$locationProvider',
       controller: 'MyDiscussionsCtrl',
     })
     */
-    
+
     // Rota para a página Modules Management
     .when('/modules-management', {
       templateUrl: 'templates/modules-management.html',
