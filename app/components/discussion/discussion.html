@@ -13,7 +13,7 @@
   </section>
   <section class="discussion" ng-repeat="discussion in discussions">
     <!-- TODO: shows user's profile when clicking their username -->
-    <p>{{discussion.userName}} : {{discussion.text}}</p>
+    <p><a ng-href="user-profile/{{discussion.userId}}">{{discussion.userName}}</a> : {{discussion.text}}</p>
     <div class="comment" ng-repeat="comment in discussion.comments">
       <!-- TODO: shows user's profile when clicking their username -->
       <p>
