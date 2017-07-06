@@ -6,7 +6,7 @@
     </div>
     <div class="questao-opcoes" ng-show="question.isMultipleChoice">
       <div class="" ng-repeat="opc in question.alternatives">
-        <input type="radio" id="{{'' + question.id + $index}}" ng-model="question.id" ng-value="{{$index}}">
+        <input type="radio" id="{{'' + question.id + $index}}"  ng-value="{{$index}}" name="{{question.id}}">
         <label for="{{'' + question.id + $index}}">{{opc}}</label>
       </div>
     </div>
