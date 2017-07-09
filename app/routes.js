@@ -20,7 +20,7 @@ app.config(['$routeProvider','$locationProvider',
       })
       // Rota para a página Insert Question
       .when('/insert-question', {
-        templateUrl: 'templates/insert-question.html',
+        templateUrl: './app/components/insert-question/insert-question.html',
         controller: 'InsertQuestionCtrl',
       })
       // Rota para a página List Questions
