@@ -49,6 +49,7 @@ const app = angular.module('jQuest',['ngRoute'])
 })
 
 .controller('ListQuestionsCtrl', function($scope) {
+  $scope.quantity = 10;
   //simulates json response
   $scope.questions = [
     {
