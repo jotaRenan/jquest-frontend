@@ -25,7 +25,7 @@
     <div class="">
       <h3>Perguntas do usuário</h3>
       <ul ng-show="user.ownQuestions.length > 0">
-        <li ng-repeat="question in user.ownQuestions">
+        <li ng-repeat="question in user.ownQuestions | limitTo: quantity">
           <a ng-href="question/{{question.id}}">{{question.shortDesc}}</a>
         </li>
       </ul>
@@ -35,7 +35,7 @@
     <div class="">
       <h3>Participação em discussões</h3>
       <ul ng-show="user.latestPosts.length > 0">
-        <li ng-repeat="post in latestPosts">
+        <li ng-repeat="post in latestPosts | limitTo: quantity">
           <a ng-href="question/comment/{{post.id}}"><!-- TODO: get question shortDesc--></a>
         </li>
       </ul>

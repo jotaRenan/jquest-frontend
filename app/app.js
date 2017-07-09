@@ -105,6 +105,7 @@ const app = angular.module('jQuest',['ngRoute'])
     ],
     latestPosts: [],
   }
+  $scope.quantity = 3;
 })
 
 .directive('jqNavbar', function() {
