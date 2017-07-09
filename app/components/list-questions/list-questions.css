@@ -1,0 +1,6 @@
+.questao-box:not(:last-child)::after {
+  display: block;
+  content: '';
+  border: 0.5px  solid  #fceced;
+  margin: 2%;
+}
