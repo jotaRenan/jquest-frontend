@@ -3956,3 +3956,24 @@
 			}
 
 		}
+
+.domains-box {
+	display: flex;
+	background-color: lightgreen;
+	position: absolute;
+	flex-basis: auto;
+}
+
+.sub-menu {
+	position: absolute;
+	top: 2em;
+	display: none;
+	background-color: red;
+}
+.sub-menu ul {
+	list-style-type: none;
+}
+.sub-menu ul li {
+	display: inline-block;
+	background-color: tomato;
+}

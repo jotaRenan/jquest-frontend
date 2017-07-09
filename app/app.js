@@ -107,9 +107,18 @@ const app = angular.module('jQuest',['ngRoute'])
   }
 })
 
+.controller('NavBarController', function($scope, $log) {
+  $scope.showMenu = ($event) => {
+    const subMenu = $event.currentTarget.parentNode.querySelector('.sub-menu');
+    const currentState = subMenu.style.display;
+    subMenu.style.display = currentState === 'block' ? 'none' : 'block';
+  }
+})
+
 .directive('jqNavbar', function() {
   return {
     restrict: 'E',
-    templateUrl : 'app/components/shared/navbar.html'
+    templateUrl : 'app/components/shared/navbar.html',
+    controller: 'NavBarController'
   };
 });
