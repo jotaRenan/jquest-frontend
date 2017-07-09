@@ -8,6 +8,7 @@ JQuest é o trabalho prático para conclusão do 3o ano do Curso Técnico de Inf
   - Breno Paiva Morais
   - Gabriel Henrique Souza Haddad Campos
   - João Pedro Rosa e Silva Renan
+  - Paula Mara Ribeiro
   - Thales Gabriel Silva Nunes
 
 - ## Professores:
