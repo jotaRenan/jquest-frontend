@@ -3,8 +3,8 @@
     <h4>{{question.heading}}</h4>
     <div class="questao-opcoes" ng-show="question.isMultipleChoice">
       <div class="" ng-repeat="opc in question.alternatives">
-        <input type="radio" id="{{question.id}}" ng-model="question.id" ng-value="{{$index}}">
-        <label for="{{question.id}}">{{opc}}</label>
+        <input type="radio" id="{{'' + question.id + $index}}" ng-value="{{$index}}" name="{{question.id}}">
+        <label for="{{'' + question.id + $index}}">{{opc}}</label>
       </div>
     </div>
     <div class="questao-texto" ng-hide="question.isMultipleChoice">
