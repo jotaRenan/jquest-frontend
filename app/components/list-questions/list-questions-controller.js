@@ -1,6 +1,6 @@
  angular.module('jQuest')
 
-.controller('ListQuestionsCtrl', function($scope) {
+.controller('ListQuestionsCtrl', function($scope, $log) {
   $scope.quantity = 10;
   //simulates json response
   $scope.questions = [
@@ -19,7 +19,8 @@
         'Manutenção da forma da célula e formação do fuso mitótico.',
         'Formação do fuso mitótico e movimentos ameboídes.',
         'Deslocamentos do cromossomos e movimentos ameboídes'
-      ]
+      ],
+      correctIndex : 2,
     },
     {
       id: 124,
@@ -31,7 +32,28 @@
         '12N',
         '120N',
         '1200N'
-      ]
+      ],
+      correctIndex : 0,
     }
   ]
+  $scope.confirmQuestion = (questionId) => {
+    const MAX_QUESTIONS = 10;
+    // if user isnt logged
+    const currentlyAnswered = JSON.parse(localStorage.getItem('answered'));
+    if (currentlyAnswered == null) {
+      localStorage.setItem('answered', JSON.stringify([questionId]));
+    } else if (currentlyAnswered.length == MAX_QUESTIONS && !currentlyAnswered.includes(questionId)) {
+      alert(`Você já respondeu ${MAX_QUESTIONS} questões. Faça login para poder responder mais.`);
+    } else if ( !currentlyAnswered.includes(questionId)) {
+      currentlyAnswered.push(questionId);
+      localStorage.setItem('answered', JSON.stringify(currentlyAnswered));
+
+    }
+    const questionToBeChecked = $scope.questions.find(q => q.id == questionId);
+    // TODO: change css based on this
+    question.status = question.correctIndex === question.selectedValue ? 'acerto disgrace' : 'errouuu';
+    // TODO: if user is logged
+
+  }
+
 })
