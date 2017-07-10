@@ -21,8 +21,6 @@
         'Deslocamentos do cromossomos e movimentos ameboídes'
       ],
       correctIndex : 2,
-      module : 'Citologia',
-      domain : 'Física',
     },
     {
       id: 124,
