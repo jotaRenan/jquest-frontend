@@ -4,3 +4,13 @@
   border: 0.5px  solid  #fceced;
   margin: 2%;
 }
+.tag {
+  display: inline-block;
+  background-color: tomato;
+  border-radius: 10px;
+  font-size: 60%;
+  font-weight: normal;
+  color: white;
+  padding: 1px 4px;
+  margin: auto 0;
+}

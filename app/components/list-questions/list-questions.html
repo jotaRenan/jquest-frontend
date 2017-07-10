@@ -2,17 +2,25 @@
 <section>
   <h1>Perguntas</h1>
   <div class="questao-box" ng-repeat="question in questions | limitTo : quantity">
-    <div class="questao-enunciado">
-      <h4><a ng-href="question/{{question.id}}">{{question.heading}}</a></h4>
-    </div>
-    <div class="questao-opcoes" ng-show="question.isMultipleChoice">
-      <div class="" ng-repeat="opc in question.alternatives">
-        <input type="radio" id="{{'' + question.id + $index}}"  ng-value="{{$index}}" name="{{question.id}}">
-        <label for="{{'' + question.id + $index}}">{{opc}}</label>
+    <form name="{{question.id}}">
+      <div class="questao-enunciado">
+        <h4>
+          <a ng-href="question/{{question.id}}">{{question.heading}}</a>
+          <span class="tag">{{question.module}}</span>
+          <span class="tag">{{question.domain}}</span>
+        </h4>
       </div>
-    </div>
-    <div class="questao-texto" ng-hide="question.isMultipleChoice">
-      <textarea name="answer" rows="3" cols="80"></textarea>
-    </div>
+      <div class="questao-opcoes" ng-if="question.isMultipleChoice">
+        <div class="" ng-repeat="opc in question.alternatives">
+          <input type="radio" id="{{'' + question.id + $index}}" ng-model="question.selectedValue" ng-value="{{$index}}" name="{{question.id}}" required>
+          <label for="{{'' + question.id + $index}}">{{opc}}</label>
+        </div>
+        <p><button ng-click="confirmQuestion(question.id)" ng-disabled="question.selectedValue == undefined" type="submit" class="button">Enviar</button>{{question.status}}</p>
+      </div>
+      <div class="questao-texto" ng-if="!question.isMultipleChoice">
+        <textarea name="answer" rows="3" cols="80" required></textarea>
+        <button ng-click="confirmQuestion(question.id)" type="submit" class="button">Enviar</button>
+      </div>
+    </form>
   </div>
 </section>
