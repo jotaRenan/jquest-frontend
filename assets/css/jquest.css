@@ -16,3 +16,8 @@ body, html {
 		position: relative;
 		z-index: 9999;
   }
+
+.chart{
+	width: 450px;
+	height: 250px;
+}

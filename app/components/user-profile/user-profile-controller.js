@@ -21,20 +21,22 @@
      data: {
             labels: ["Erros", "Acertos"],
             datasets: [{
-                label: 'Numero de Questões',
+                label: 'Numero de questões',
                 data: [12, 5],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
-                    'rgba(75, 192, 192, 0.5)'
+                    'rgba(75, 192, 192, 0.5)',
+  
                 ],
                 borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(75, 192, 192, 1)'
+                    'rgba(255,99,132,0.7)',
+                    'rgba(75, 192, 192, 0.7)'
                 ],
                 borderWidth: 1
             }]
         },
         options: {
+            legend: { display: false},
             scales: {
                 xAxes: [{
                     ticks: {
@@ -47,7 +49,9 @@
                         
                     }
                 }]
-            }
+            },
+            responsive: false,
+            maintainAspectRatio: false
         }
   });
 })
