@@ -13,4 +13,41 @@
     latestPosts: [],
   }
   $scope.quantity = 3;
+
+  let ctx = document.querySelector("#testChart");
+
+  let barChart = new Chart(ctx, {
+      type: 'horizontalBar',
+     data: {
+            labels: ["Erros", "Acertos"],
+            datasets: [{
+                label: 'Numero de Questões',
+                data: [12, 5],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        min: 0,
+                        stepSize: 2
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        
+                    }
+                }]
+            }
+        }
+  });
 })
