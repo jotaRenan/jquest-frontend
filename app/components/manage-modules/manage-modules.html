@@ -1,0 +1,39 @@
+<!-- TODO: improve the search and make it simillar to the one on the JS30 day 6 activity -->
+<link rel="stylesheet" href="./app/components/manage-modules/manage-modules.css">
+<section>
+
+  <!-- Selecting the module to be edited -->
+  <form name="modulesForm">
+    <label for="select-module">Selecione o módulo desejado</label>
+    <select id="select-module" class="" name="selectedModule"
+            ng-model="selectedModuleId"
+            ng-change="updateFields()"
+            size="10" required>
+      <option ng-repeat="module in modules" ng-value="module.id">{{module.name}}</option>
+    </select>
+    <button ng-click="modulesForm.$valid && deleteModule()" type="submit" name="button">Excluir</button>
+  </form>
+
+  <!-- Editing the information -->
+  <form class="" name="ctrl.editModuleForm">
+    <div class="flexible">
+      <div class="item">
+        <label for="edit-module-name">Editar nome</label>
+        <input id="edit-module-name" type="text" name="moduleName"
+               ng-value="selectedModule.name || 'Selecione um módulo' "
+               ng-disabled="!modulesForm.$valid">
+      </div>
+      <div class="item">
+        <label for="edit-domain">Editar domínio</label>
+        <select id="edit-domain" class="" name="edit-domain" ng-disabled="!modulesForm.$valid">
+          <option value="" ng-if="!modulesForm.$valid" selected>Selecione um módulo</option>
+          <option ng-repeat="domain in domains" ng-value="domain.id"
+                  ng-selected="domain.id == selectedModule.id">{{domain.name}}</option>
+        </select>
+      </div>
+    </div>
+  </form>
+  <!-- TODO: make $pristine and $dirty work so the button can only be clicked when changes have actually been made to the content -->
+  <button ng-click="" class="button" ng-class="!modulesForm.$valid ? 'disabled' : ''">Confirmar alterações</button>
+
+</section>

@@ -68,9 +68,9 @@ app.config(['$routeProvider','$locationProvider',
       */
 
       // Rota para a página Modules Management
-      .when('/modules-management', {
-        templateUrl: 'templates/modules-management.html',
-        controller: 'ModulesManagementCtrl',
+      .when('/manage-modules', {
+        templateUrl: './app/components/manage-modules/manage-modules.html',
+        controller: 'ManageModulesCtrl as ctrl',
       })
       // Rota para a página Domain Management
       .when('/domain-management', {
