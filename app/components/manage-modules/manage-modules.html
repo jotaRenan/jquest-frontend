@@ -38,4 +38,27 @@
   </form>
   <button ng-click="" class="button" ng-class="ctrl.editModuleForm.$pristine ? 'disabled' : ''">Confirmar alterações</button>
 
+  <!-- Insert new module -->
+  <h2>Inserir novo módulo</h2>
+  <form class="" name="ctrl.insertModuleForm">
+    <div class="flexible">
+      <div class="item">
+        <label for="insert-module-name">Nome do novo Módulo</label>
+        <input id="insert-module-name" type="text" name="moduleName"
+               placeholder="Insira nome"
+               ng-model="newModuleName"
+               required>
+      </div>
+      <div class="item">
+        <label for="select-domain">Editar domínio</label>
+        <select id="select-domain" class="" name="select-domain"
+          ng-options="domain.id as domain.name for domain in domains"
+          ng-model="newModuleDomain"
+          required>
+          <option value="" disabled selected>Selecione um domínio de conhecimento</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" ng-click="" class="button" ng-class="ctrl.insertModuleForm.$invalid ? 'disabled' : '' ">Confirmar alterações</button>
+  </form>
 </section>
