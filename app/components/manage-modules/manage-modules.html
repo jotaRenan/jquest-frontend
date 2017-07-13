@@ -3,13 +3,14 @@
 <section>
 
   <!-- Selecting the module to be edited -->
+  <h2>Editar módulo</h2>
   <form name="modulesForm">
-    <label for="select-module">Selecione o módulo desejado</label>
+    <label for="select-module">Selecione o módulo desejado:</label>
     <select id="select-module" class="" name="selectedModule"
             ng-model="selectedModuleId"
             ng-change="updateFields()"
+            ng-options="module.id as module.name for module in modules"
             size="10" required>
-      <option ng-repeat="module in modules" ng-value="module.id">{{module.name}}</option>
     </select>
     <button ng-click="modulesForm.$valid && deleteModule()" type="submit" name="button">Excluir</button>
   </form>
@@ -21,19 +22,20 @@
         <label for="edit-module-name">Editar nome</label>
         <input id="edit-module-name" type="text" name="moduleName"
                ng-value="selectedModule.name || 'Selecione um módulo' "
+               ng-model="editModuleName"
                ng-disabled="!modulesForm.$valid">
       </div>
       <div class="item">
         <label for="edit-domain">Editar domínio</label>
-        <select id="edit-domain" class="" name="edit-domain" ng-disabled="!modulesForm.$valid">
-          <option value="" ng-if="!modulesForm.$valid" selected>Selecione um módulo</option>
-          <option ng-repeat="domain in domains" ng-value="domain.id"
+        <select id="edit-domain" class="" name="edit-domain" ng-disabled="!modulesForm.$valid" ng-model="editModuleDomain">
+          <option value="" hidden selected>Selecione um módulo</option>
+          <option ng-repeat="domain in domains"
+                  ng-value="domain.id"
                   ng-selected="domain.id == selectedModule.id">{{domain.name}}</option>
         </select>
       </div>
     </div>
   </form>
-  <!-- TODO: make $pristine and $dirty work so the button can only be clicked when changes have actually been made to the content -->
-  <button ng-click="" class="button" ng-class="!modulesForm.$valid ? 'disabled' : ''">Confirmar alterações</button>
+  <button ng-click="" class="button" ng-class="ctrl.editModuleForm.$pristine ? 'disabled' : ''">Confirmar alterações</button>
 
 </section>
