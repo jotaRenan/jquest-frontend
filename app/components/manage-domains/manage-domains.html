@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="./app/components/manage-domains/manage-domains.css">
+<section>
+
+  <!-- Selecting the domain to be edited -->
+  <h2>Editar domínio</h2>
+  <form name="domainsForm">
+    <label for="select-domain">Selecione o domínio desejado:</label>
+    <select id="select-domain" class="" name="selectedDomain"
+            ng-model="selectedDomainId"
+            ng-change="updateFields()"
+            ng-options="domain.id as domain.name for domain in domains"
+            size="10" required>
+    </select>
+    <button ng-click="domainsForm.$valid && deleteDomain()" type="submit" name="button">Excluir</button>
+  </form>
+
+  <!-- Editing the information -->
+  <form class="" name="ctrl.editDomainForm">
+    <div class="flexible">
+      <div class="item">
+        <label for="edit-domain-name">Editar nome</label>
+        <input id="edit-domain-name" type="text" name="domainName"
+               ng-value="selectedDomain.name || 'Selecione um domínio' "
+               ng-model="editDomainName"
+               ng-disabled="!domainsForm.$valid">
+      </div>
+    </div>
+  </form>
+  <button ng-click="" class="button" ng-class="ctrl.editDomainForm.$pristine ? 'disabled' : ''">Confirmar alterações</button>
+
+  <!-- Insert new domain -->
+  <h2>Inserir novo domínio</h2>
+  <form class="" name="ctrl.insertdomainForm">
+    <div class="flexible">
+      <div class="item">
+        <label for="insert-domain-name">Nome do novo domínio</label>
+        <input id="insert-domain-name" type="text" name="domainName"
+               placeholder="Insira nome"
+               ng-model="newDomainName"
+               required>
+      </div>
+    </div>
+    <button type="submit" ng-click="" class="button" ng-class="ctrl.insertDomainForm.$invalid ? 'disabled' : '' ">Confirmar alterações</button>
+  </form>
+</section>

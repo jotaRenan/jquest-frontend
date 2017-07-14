@@ -72,10 +72,10 @@ app.config(['$routeProvider','$locationProvider',
         templateUrl: './app/components/manage-modules/manage-modules.html',
         controller: 'ManageModulesCtrl as ctrl',
       })
-      // Rota para a página Domain Management
-      .when('/domain-management', {
-        templateUrl: 'templates/domain-management.html',
-        controller: 'DomainManagementCtrl',
+      // Rota para a página Domains Management
+      .when('/manage-domains', {
+        templateUrl: './app/components/manage-domains/manage-domains.html',
+        controller: 'ManageDomainsCtrl',
       })
       // Rota para a página Dissertive Question Correction
       .when('/dissertive-question-correction', {
