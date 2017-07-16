@@ -9,9 +9,23 @@
       <option value="" selected disabled hidden>{{selectedModule.name}}</option>
     </select>
     <textarea ng-model="question.heading" rows="3" cols="80" placeholder="Enunciado da Questão"></textarea>
-    <input type="checkbox" id="choose-if-open" ng-model="question.isMultipleChoice"></input>
-    <label for="choose-if-open">Questão Fechada</label>
-    <div class="alternatives" ng-show="question.isMultipleChoice">
-      <input type="text" name="" ng-repeat="n in [0,1,2,3,4]" id="alt{{n}}" ng-model="question.alternatives[n]" placeholder="Alternativa {{n+1}}">
+    <div id="choose-identity">
+      <input id="identity-A" type="radio" name="identity" ng-model="question.idt" value="A" ng-change="reset('A')" ></input>
+      <label for="identity-A">Questão Aberta</label>
+      <input id="identity-M" type="radio" name="identity" ng-model="question.idt" value="M" ng-change="reset('M')" ></input>
+      <label for="identity-M">Questão Múltipla-Escolha</label>
+      <input id="identity-V" type="radio" name="identity" ng-model="question.idt" value="V" ng-change="reset('V')"></input>
+      <label for="identity-V">Questão Verdadeiro ou Falso</label>
     </div>
+    <div class="alternatives" ng-if="question.idt === 'M' ">
+        <input type="text" name="" ng-repeat="n in [0,1,2,3,4]" id="alt{{n}}" ng-model="question.alternatives[n]" placeholder="Alternativa {{n+1}}">
+    </div>
+    <div class="alternatives" ng-if="question.idt === 'V' ">
+      <div class="alternative" ng-repeat="n in [0,1,2,3,4]" id="alt{{n}}">
+        <input type="text" name="" ng-model="question.alternatives[n].assertive" placeholder="Alternativa {{n+1}}">
+        <input type="checkbox" name="" id="{{'assertive' + n}}" ng-model="question.alternatives[n].isCorrect">
+        <label for="{{'assertive' + n}}">Verdadeiro</label>
+      </div>
+    </div>
+    <a ng-click="submitQuestion()">Adicionar</a>
 </div>
