@@ -10,14 +10,14 @@
           <span class="tag">{{question.domain}}</span>
         </h4>
       </div>
-      <div class="questao-opcoes" ng-if="question.isMultipleChoice">
+      <div class="questao-opcoes" ng-if="question.idt === 'M' ">
         <div class="" ng-repeat="opc in question.alternatives">
           <input type="radio" id="{{'' + question.id + $index}}" ng-model="question.selectedValue" ng-value="{{$index}}" name="{{question.id}}" required>
           <label for="{{'' + question.id + $index}}">{{opc}}</label>
         </div>
         <p><button ng-click="confirmQuestion(question.id)" ng-disabled="question.selectedValue == undefined" type="submit" class="button">Enviar</button>{{question.status}}</p>
       </div>
-      <div class="questao-texto" ng-if="!question.isMultipleChoice">
+      <div class="questao-texto" ng-if="question.idt === 'A' ">
         <textarea name="answer" rows="3" cols="80" required></textarea>
         <button ng-click="confirmQuestion(question.id)" type="submit" class="button">Enviar</button>
       </div>
