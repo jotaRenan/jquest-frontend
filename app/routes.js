@@ -82,6 +82,9 @@ app.config(['$routeProvider','$locationProvider',
         templateUrl: 'templates/dissertive-question-correction.html',
         controller: 'DissertiveQuestionsCorrectionCtrl',
       })
+      .when('/not-found', {
+        templateUrl: './app/components/shared/not-found.html'
+      })
       .otherwise({
           redirectTo : '/list-questions'
       });
