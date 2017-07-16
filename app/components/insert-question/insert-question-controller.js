@@ -1,6 +1,6 @@
  angular.module('jQuest')
 
-.controller('InsertQuestionCtrl', function($scope, $log) {
+.controller('InsertQuestionCtrl', function($scope, $log, $http) {
   // Skeleton of how the new question object is
   $scope.question = {
     heading : '',
@@ -9,49 +9,35 @@
     alternatives : [],
     idt : 'A',
   }
-  // Simulates JSON
-  $scope.domainsList = [
-    {
-      name : 'Matemagica',
-      id : 123,
-    },
-    {
-      name : 'Banco de dados',
-      id : 11,
-    }
-  ];
+  $http ({
+       method: 'GET',
+       url: `http://localhost:8080/JQuestWebApplication/GetDomainsFullDataServlet`
+   })
+    .then(response => $scope.domainsList = response.data);
   // Default value for when a domain is not selected
   $scope.modulesList = [{name: '----', id: '',}];
   $scope.selectedModule = $scope.modulesList[0];
 
   $scope.reset = tipo => {
+    const current = $scope.question;
     const temp = {
-      heading : '',
-      domainId : undefined,
-      selectedModuleId : undefined,
+      heading : current.heading,
+      domainId : current.domainId,
+      selectedModuleId : current.selectedModuleId,
       idt : tipo,
     }
     if (tipo != 'A') {
       temp.alternatives = Array(5).fill('');
     } if (tipo === 'V') {
-      temp.alternatives.fill( {assertive : '', isCorrect : false});
+      for (let i=0; i< temp.alternatives.length; i++) {
+        temp.alternatives[i] = {assertive : '', isCorrect : false};
+      }
     }
     $scope.question = temp;
   }
   // Populates Modules dropdown after a domain is selected
   // TODO: change values of modulesList after request to backend
   $scope.getModules = (domainId) => {
-    if (domainId == 123) {
-      $scope.modulesList = [
-        {
-          name : 'Trig',
-          id : 99,
-        },
-        {
-          name : 'Matrizes',
-          id : 1,
-        }
-      ]
-    }
+    $scope.modulesList = $scope.domainsList.find( domainInList => domainInList.domainId === domainId).modules;
   }
 })
