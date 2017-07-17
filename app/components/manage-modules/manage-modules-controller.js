@@ -3,6 +3,7 @@
    // TODO: change attribute names in order to match json
    $scope.selectedModule = undefined;
    $scope.selectedModuleId = undefined;
+   $scope.modules = [];
    $http ({
         method: 'GET',
         url: `http://localhost:8080/JQuestWebApplication/GetDomainsFullDataServlet`
