@@ -27,7 +27,7 @@
       </div>
     </div>
   </form>
-  <button ng-click="" class="button" ng-class="ctrl.editDomainForm.$pristine ? 'disabled' : ''">Confirmar alterações</button>
+  <button ng-click="ctrl.editDomainForm.$valid && editDomain()" class="button" ng-class="ctrl.editDomainForm.$pristine ? 'disabled' : ''">Confirmar alterações</button>
 
   <!-- Insert new domain -->
   <h2>Inserir novo domínio</h2>
@@ -37,10 +37,17 @@
         <label for="insert-domain-name">Nome do novo domínio</label>
         <input id="insert-domain-name" type="text" name="domainName"
                placeholder="Insira nome"
-               ng-model="newDomainName"
+               ng-model="newDomain.name"
+               required>
+        <label for="insert-domain-description">Descrição do novo domínio</label>
+        <input id="insert-domain-description" type="text" name="domainDescription"
+               placeholder="Insira descrição"
+               ng-model="newDomain.description"
                required>
       </div>
     </div>
-    <button type="submit" ng-click="" class="button" ng-class="ctrl.insertDomainForm.$invalid ? 'disabled' : '' ">Confirmar alterações</button>
+    <button type="submit" ng-click="ctrl.insertdomainForm.$valid && insertDomain()" class="button" ng-class="ctrl.insertDomainForm.$invalid ? 'disabled' : '' ">Inserir</button>
   </form>
+  <!-- TODO: Style the message -->
+  {{msg}}
 </section>
