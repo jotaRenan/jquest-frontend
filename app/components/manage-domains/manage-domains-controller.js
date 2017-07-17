@@ -1,10 +1,8 @@
  angular.module('jQuest')
  .controller('ManageDomainsCtrl', function($scope, $log, $http) {
    $scope.selectedDomain = undefined;
-   $scope.selectedDomainId = undefined;
    $scope.updateFields = () => {
-     $scope.selectedDomain = $scope.domains.find(m => m.domainId == $scope.selectedDomainId);
-     $log.log($scope.selectedDomain);
+     $scope.selectedDomain = $scope.domains.find(domain => domain.id == $scope.selectedDomain.id);
    }
    $http ({
         method: 'GET',

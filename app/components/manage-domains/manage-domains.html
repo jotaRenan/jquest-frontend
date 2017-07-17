@@ -6,9 +6,9 @@
   <form name="domainsForm">
     <label for="select-domain">Selecione o domínio desejado:</label>
     <select id="select-domain" class="" name="selectedDomain"
-            ng-model="selectedDomainId"
+            ng-model="selectedDomain.id"
             ng-change="updateFields()"
-            ng-options="domain.domainId as domain.domainName for domain in domains"
+            ng-options="domain.id as domain.name for domain in domains"
             size="10" required>
     </select>
     <button ng-disabled="domainsForm.$invalid" ng-click="domainsForm.$valid && deleteDomain()" type="submit" name="button">Excluir</button>
@@ -21,7 +21,7 @@
       <div class="item">
         <label for="edit-domain-name">Editar nome</label>
         <input id="edit-domain-name" type="text" name="domainName"
-               ng-value="selectedDomain.domainName || 'Selecione um domínio' "
+               ng-value="selectedDomain.name || 'Selecione um domínio' "
                ng-model="editDomainName"
                ng-disabled="!domainsForm.$valid">
       </div>
