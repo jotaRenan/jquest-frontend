@@ -8,7 +8,7 @@
     <select ng-disabled="!(!!question.domainId)" ng-model="question.selectedModuleId" ng-options="module.id as module.name for module in modulesList">
       <option value="" selected disabled>Escolha o Módulo ▼</option>
     </select>
-    <select ng-model="question.difficulty">
+    <select ng-model="question.dificulty">
       <option value="" selected disabled>Escolha a Dificuldade ▼</option>
       <option value="F">Fácil</option>
       <option value="M">Médio</option>
