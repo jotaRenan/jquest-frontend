@@ -1,28 +1,59 @@
 <article class="">
   <section>
-    <h4>{{question.heading}}</h4>
-    <div class="questao-opcoes" ng-if="question.idt === 'M' ">
-      <div class="" ng-repeat="opc in question.alternatives">
-        <input type="radio" id="{{'' + question.id + $index}}" ng-model="question.selectedValue" ng-value="{{$index}}" name="{{question.id}}" required>
-        <label for="{{'' + question.id + $index}}">{{opc}}</label>
+    <form name="formQuestion">
+      <div class="questao-enunciado">
+        <h4>
+          <a ng-href="question/{{question.id}}">{{question.heading}}</a>
+          <span class="tag">{{question.module}}</span>
+          <span class="tag">{{question.domain}}</span>
+        </h4>
       </div>
-      <p><button ng-click="confirmQuestion(question.id)" ng-disabled="question.selectedValue == undefined" type="submit" class="button">Enviar</button>{{question.status}}</p>
-    </div>
-    <div class="questao-texto" ng-if="question.idt === 'A' ">
-      <textarea name="answer" rows="3" cols="80" required></textarea>
-      <button ng-click="confirmQuestion(question.id)" type="submit" class="button">Enviar</button>
-    </div>
+      <div class="questao-VouF" ng-if="question.idt === 'V' ">
+        <div class="" ng-repeat="opc in question.alternatives">
+          <p>
+            <select id="{{'' + question.id + $index}}" ng-model="opc.selectedValue"
+                    name="{{question.id}}"
+                    class="TorFquest"
+                    required>
+              <option ng-value="true">V</option>
+              <option ng-value="false">F</option>
+            </select>
+            <label for="{{'' + question.id + $index}}">{{opc.assertive}}</label>
+          </p>
+        </div>
+        <p><button ng-click="formQuestion.$valid && confirmQuestion(question.id)"
+                   ng-class="formQuestion.$invalid ? 'disabled' : ''"
+                   type="submit"
+                   class="button">Enviar</button>{{question.status}}</p>
+      </div>
+      <div class="questao-opcoes" ng-if="question.idt === 'M' ">
+        <div class="" ng-repeat="opc in question.alternatives">
+          <input type="radio"
+                 id="{{'' + question.id + $index}}"
+                 ng-model="question.selectedValue"
+                 ng-value="{{$index}}"
+                 name="{{question.id}}"
+                 required>
+          <label for="{{'' + question.id + $index}}">{{opc}}</label>
+        </div>
+        <p><button ng-click="confirmQuestion(question.id)" ng-disabled="question.selectedValue == undefined" type="submit" class="button">Enviar</button>{{question.status}}</p>
+      </div>
+      <div class="questao-texto" ng-if="question.idt === 'A' ">
+        <textarea name="answer" rows="3" cols="80" required></textarea>
+        <button ng-click="formQuestion.$valid && confirmQuestion(question.id)" type="submit" class="button" ng-class="formQuestion.$invalid ? 'disabled' : ''">Enviar</button>
+      </div>
+    </form>
   </section>
   <section class="discussion" ng-repeat="discussion in discussions">
     <!-- TODO: shows user's profile when clicking their username -->
-    <p><a ng-href="user-profile/{{discussion.user.id}}">{{discussion.user.name}}</a> : {{discussion.text}}</p>
+    <p><a ng-href="user-profile/{{discussion.userId}}">{{discussion.userName}}</a> : {{discussion.text}}</p>
     <div class="comment" ng-repeat="comment in discussion.comments">
       <!-- TODO: shows user's profile when clicking their username -->
       <p>
         <!-- TODO: implement functions related to voting -->
         <span ng-click="upvoteComment(comment.id)">👍</span>
         <span ng-click="downvoteComment(comment.id)">👎</span>
-        <a ng-href="user-profile/{{comment.user.id}}">{{comment.user.name}}</a> : {{comment.text}}
+        <a ng-href="user-profile/{{comment.userId}}">{{comment.userName}}</a> : {{comment.text}}
       </p>
       <p></p>
     </div>

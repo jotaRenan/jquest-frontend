@@ -10,7 +10,11 @@
    })
       // https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
       .then(associarDadosChamada, exibirErro);
-
+  $http ({
+      method: 'GET',
+      url:`http://localhost:8080/JQuestWebApplication/GetForunsByQuestionIdServlet?id=${$routeParams.questionId}`
+  })
+    .then(response => $scope.discussions = response.data);
   $scope.confirmQuestion = (questionId) => {
     const MAX_QUESTIONS = 10;
     // if user isnt logged
@@ -25,35 +29,16 @@
     }
     const questionToBeChecked = $scope.question;
     // TODO: change css based on this
-    questionToBeChecked.status = questionToBeChecked.correctIndex === questionToBeChecked.selectedValue ? 'acerto disgrace' : 'errouuu';
+    if (questionToBeChecked.idt === 'M') {
+      questionToBeChecked.status = questionToBeChecked.correctIndex === questionToBeChecked.selectedValue ? 'acerto disgrace' : 'errouuu';
+      let questIndex = '' + questionToBeChecked.id + questionToBeChecked.correctIndex;
+      let questionElement = angular.element(document.getElementById(questIndex).parentNode);
+      questionElement.addClass('showCorrect');
+    } else if (questionToBeChecked.idt === 'V') {
+      const wrongAnswers = questionToBeChecked.alternatives.filter(alt => alt.isCorrect !== alt.selectedValue);
+      questionToBeChecked.status = wrongAnswers.length === 0 ? `Acertô mizeravi` : `Erooou`;
+    }
     // TODO: if user is logged
 
   }
-  $scope.discussions = [
-    {
-      id : 123,
-      text : 'gosto de tirar fotinhas',
-      user : {
-        name : 'jotarenan',
-        id : 11
-      },
-      comments : [ {
-          id : 01,
-          user : {
-            name: 'paulamr05',
-            id : 55,
-          },
-          text : 'gosto de cachorrinhos',
-        },
-        {
-          id : 02,
-          user : {
-            name: 'bacmariz',
-            id: 33,
-          },
-          text : 'gosto de memes do whatsapp',
-        }
-      ]
-    }
-  ];
 })
