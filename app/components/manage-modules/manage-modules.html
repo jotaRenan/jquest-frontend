@@ -27,7 +27,10 @@
       </div>
       <div class="item">
         <label for="edit-domain">Editar domínio</label>
-        <select id="edit-domain" class="" name="edit-domain" ng-disabled="!modulesForm.$valid" ng-model="editModuleDomain">
+        <select id="edit-domain" class="" name="edit-domain" ng-disabled="!modulesForm.$valid"
+                ng-model="selectedModule.domainId">
+                <!-- ng-options="domain.id as domain.name for domain in domains track by domain.id"
+                ng-selected="domain.id == selectedModule.id"> -->
           <option value="" hidden selected>Selecione um módulo</option>
           <option ng-repeat="domain in domains"
                   ng-value="domain.id"
@@ -36,7 +39,7 @@
       </div>
     </div>
   </form>
-  <button ng-click="" class="button" ng-class="ctrl.editModuleForm.$pristine ? 'disabled' : ''">Confirmar alterações</button>
+  <button ng-click="updateModule()" class="button" ng-class="ctrl.editModuleForm.$pristine ? 'disabled' : ''">Confirmar alterações</button>
 
   <!-- Insert new module -->
   <h2>Inserir novo módulo</h2>
