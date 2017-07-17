@@ -8,6 +8,12 @@
     <select ng-disabled="!(!!question.domainId)" ng-model="question.selectedModuleId" ng-options="module.id as module.name for module in modulesList">
       <option value="" selected disabled>Escolha o Módulo ▼</option>
     </select>
+    <select ng-model="question.difficulty">
+      <option value="" selected disabled>Escolha a Dificuldade ▼</option>
+      <option value="F">Fácil</option>
+      <option value="M">Médio</option>
+      <option value="D">Difícil</option>
+    </select>
     <textarea ng-model="question.heading" rows="3" cols="80" placeholder="Enunciado da Questão"></textarea>
     <div id="choose-identity">
       <input id="identity-A" type="radio" name="identity" ng-model="question.idt" value="A" ng-change="reset('A')" ></input>

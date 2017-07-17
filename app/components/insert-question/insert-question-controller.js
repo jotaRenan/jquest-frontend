@@ -24,6 +24,7 @@
       heading : current.heading,
       domainId : current.domainId,
       selectedModuleId : current.selectedModuleId,
+      difficulty: current.difficulty,
       idt : tipo,
     }
     if (tipo != 'A') {
@@ -36,7 +37,6 @@
     $scope.question = temp;
   }
   // Populates Modules dropdown after a domain is selected
-  // TODO: change values of modulesList after request to backend
   $scope.getModules = (domainId) => {
     $scope.modulesList = $scope.domainsList.find( domainInList => domainInList.id === domainId).modules;
   }
