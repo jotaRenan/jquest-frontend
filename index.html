@@ -23,6 +23,7 @@
 						<label>Email<input type="text" name="user-name" ng-model="credential.email" required></label>
 						<label>Senha<input type="password" name="senha" ng-model="credential.password" required></label>
 						<button ng-click="loginForm.$valid && login()" class="button">Entrar</button>
+						{{loginMessage}}
 						<p>ou <a href="register">registre-se</a></p>
 					</form>
 					<button type="button" name="button" ng-click="close()">fecha saporra</button>

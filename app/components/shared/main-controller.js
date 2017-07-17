@@ -1,6 +1,6 @@
  angular.module('jQuest')
 
-.controller('MainCtrl', function($scope, $log, $http) {
+.controller('MainCtrl', function($scope, $log, $http, $location, $rootScope) {
   // TODO: add verification
   const temp = sessionStorage.getItem('hideLogin');
   $scope.hideLogin = !!temp;
@@ -11,6 +11,9 @@
 
   $scope.logout = () => {
     sessionStorage.removeItem('loginFlag');
+    sessionStorage.setItem('hideLogin', 'false');
+    $scope.hideLogin = false;
+    $rootScope.isUserLogged = false;
   }
 
   $scope.login = () => {
@@ -24,9 +27,15 @@
      })
       .then(response => {
         sessionStorage.setItem('userInfo', JSON.stringify(response.data));
+        sessionStorage.setItem('hideLogin', 'true');
+        $scope.hideLogin = true;
+        $rootScope.isUserLogged = true;
+        $location.path('/');
+        $scope.credential = undefined;
       }, response => {
-        if (response.status === 401) {
+        if (response.status === 404) {
           // TODO: msg erro de login
+          $scope.loginMessage = "Login inválido.";
         }
       });
   }
