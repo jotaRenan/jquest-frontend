@@ -3956,3 +3956,7 @@
 			}
 
 		}
+
+textarea {
+	resize: none !important;
+}
