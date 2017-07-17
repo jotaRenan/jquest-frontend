@@ -78,9 +78,9 @@ app.config(['$routeProvider','$locationProvider',
         controller: 'ManageDomainsCtrl',
       })
       // Rota para a página Dissertive Question Correction
-      .when('/dissertive-question-correction', {
-        templateUrl: 'templates/dissertive-question-correction.html',
-        controller: 'DissertiveQuestionsCorrectionCtrl',
+      .when('/question-correction', {
+        templateUrl: './app/components/question-correction/question-correction.html',
+        controller: 'QuestionCorrectionCtrl',
       })
       .when('/not-found', {
         templateUrl: './app/components/shared/not-found.html'
