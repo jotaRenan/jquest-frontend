@@ -14,3 +14,28 @@
   padding: 1px 4px;
   margin: auto 0;
 }
+
+div.ng-scope{
+  padding-top: 15px;
+  padding-left: 8px;
+}
+
+@keyframes correctColor {
+    0%   {background-color:rgba(51, 204, 51, 0.2);
+          border: 2px solid rgba(51, 204, 51, 0.2);}
+    25%  {background-color:rgba(51, 204, 51, 0.4);
+          border: 2px solid rgba(51, 204, 51, 0.4);}
+    50%  {background-color:rgba(51, 204, 51, 0.6),
+          border: 2px solid rgba(51, 204, 51, 0.6);}
+    75%  {background-color:rgba(51, 204, 51, 0.8);
+          border: 2px solid rgba(51, 204, 51, 0.8);}
+    100% {background-color:rgba(51, 204, 51, 0.8);
+          border: 2px solid rgba(51, 204, 51, 0.8);}
+}
+
+.showCorrect {
+  border-radius: 25px;
+  animation: correctColor;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}

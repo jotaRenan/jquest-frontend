@@ -21,10 +21,17 @@
       localStorage.setItem('answered', JSON.stringify(currentlyAnswered));
     }
     const questionToBeChecked = $scope.questions.find(q => q.id == questionId);
-    // TODO: change css based on this
+
+    // DONE: change css based on this
     questionToBeChecked.status = questionToBeChecked.correctIndex === questionToBeChecked.selectedValue ? 'acerto disgrace' : 'errouuu';
+    let questIndex=''+questionToBeChecked.id+questionToBeChecked.correctIndex;
+    let questionElement = angular.element(document.getElementById(questIndex).parentNode);
+    questionElement.addClass('showCorrect');
+
     // TODO: if user is logged
+
 
   }
 
 })
+  
