@@ -1,26 +1,28 @@
 <article class="">
   <section>
     <h4>{{question.heading}}</h4>
-    <div class="questao-opcoes" ng-show="question.isMultipleChoice">
+    <div class="questao-opcoes" ng-if="question.idt === 'M' ">
       <div class="" ng-repeat="opc in question.alternatives">
-        <input type="radio" id="{{'' + question.id + $index}}" ng-value="{{$index}}" name="{{question.id}}">
+        <input type="radio" id="{{'' + question.id + $index}}" ng-model="question.selectedValue" ng-value="{{$index}}" name="{{question.id}}" required>
         <label for="{{'' + question.id + $index}}">{{opc}}</label>
       </div>
+      <p><button ng-click="confirmQuestion(question.id)" ng-disabled="question.selectedValue == undefined" type="submit" class="button">Enviar</button>{{question.status}}</p>
     </div>
-    <div class="questao-texto" ng-hide="question.isMultipleChoice">
-      <textarea name="answer" rows="3" cols="80"></textarea>
+    <div class="questao-texto" ng-if="question.idt === 'A' ">
+      <textarea name="answer" rows="3" cols="80" required></textarea>
+      <button ng-click="confirmQuestion(question.id)" type="submit" class="button">Enviar</button>
     </div>
   </section>
   <section class="discussion" ng-repeat="discussion in discussions">
     <!-- TODO: shows user's profile when clicking their username -->
-    <p><a ng-href="user-profile/{{discussion.userId}}">{{discussion.userName}}</a> : {{discussion.text}}</p>
+    <p><a ng-href="user-profile/{{discussion.user.id}}">{{discussion.user.name}}</a> : {{discussion.text}}</p>
     <div class="comment" ng-repeat="comment in discussion.comments">
       <!-- TODO: shows user's profile when clicking their username -->
       <p>
         <!-- TODO: implement functions related to voting -->
         <span ng-click="upvoteComment(comment.id)">👍</span>
         <span ng-click="downvoteComment(comment.id)">👎</span>
-        <a ng-href="user-profile/{{comment.userId}}">{{comment.userName}}</a> : {{comment.text}}
+        <a ng-href="user-profile/{{comment.user.id}}">{{comment.user.name}}</a> : {{comment.text}}
       </p>
       <p></p>
     </div>

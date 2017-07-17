@@ -11,23 +11,46 @@
       // https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
       .then(associarDadosChamada, exibirErro);
 
+  $scope.confirmQuestion = (questionId) => {
+    const MAX_QUESTIONS = 10;
+    // if user isnt logged
+    const currentlyAnswered = JSON.parse(localStorage.getItem('answered'));
+    if (currentlyAnswered == null) {
+      localStorage.setItem('answered', JSON.stringify([questionId]));
+    } else if (currentlyAnswered.length == MAX_QUESTIONS && !currentlyAnswered.includes(questionId)) {
+      alert(`Você já respondeu ${MAX_QUESTIONS} questões. Faça login para poder responder mais.`);
+    } else if ( !currentlyAnswered.includes(questionId)) {
+      currentlyAnswered.push(questionId);
+      localStorage.setItem('answered', JSON.stringify(currentlyAnswered));
+    }
+    const questionToBeChecked = $scope.question;
+    // TODO: change css based on this
+    questionToBeChecked.status = questionToBeChecked.correctIndex === questionToBeChecked.selectedValue ? 'acerto disgrace' : 'errouuu';
+    // TODO: if user is logged
+
+  }
   $scope.discussions = [
     {
       id : 123,
-      userName : 'jotarenan',
       text : 'gosto de tirar fotinhas',
-      userId :  11,
-      comments : [
-        {
+      user : {
+        name : 'jotarenan',
+        id : 11
+      },
+      comments : [ {
           id : 01,
-          userName : 'paulamr05',
-          userId : 55,
+          user : {
+            name: 'paulamr05',
+            id : 55,
+          },
           text : 'gosto de cachorrinhos',
         },
         {
           id : 02,
-          userName : 'bacmariz',
-          userId : 33,
+          user : {
+            name: 'bacmariz',
+            id: 33,
+          },
           text : 'gosto de memes do whatsapp',
         }
       ]
