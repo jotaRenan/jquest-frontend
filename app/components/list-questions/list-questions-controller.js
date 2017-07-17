@@ -23,15 +23,18 @@
     const questionToBeChecked = $scope.questions.find(q => q.id == questionId);
 
     // DONE: change css based on this
-    questionToBeChecked.status = questionToBeChecked.correctIndex === questionToBeChecked.selectedValue ? 'acerto disgrace' : 'errouuu';
-    let questIndex=''+questionToBeChecked.id+questionToBeChecked.correctIndex;
-    let questionElement = angular.element(document.getElementById(questIndex).parentNode);
-    questionElement.addClass('showCorrect');
-
+    if (questionToBeChecked.idt === 'M') {
+      questionToBeChecked.status = questionToBeChecked.correctIndex === questionToBeChecked.selectedValue ? 'acerto disgrace' : 'errouuu';
+      let questIndex = '' + questionToBeChecked.id + questionToBeChecked.correctIndex;
+      let questionElement = angular.element(document.getElementById(questIndex).parentNode);
+      questionElement.addClass('showCorrect');
+    } else if (questionToBeChecked.idt === 'V') {
+      const wrongAnswers = questionToBeChecked.alternatives.filter(alt => alt.isCorrect !== alt.selectedValue);
+      questionToBeChecked.status = wrongAnswers.length === 0 ? `Acertô mizeravi` : `Erooou`;
+    }
     // TODO: if user is logged
 
 
   }
 
 })
-  

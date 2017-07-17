@@ -2,7 +2,7 @@
 <section>
   <h1>Perguntas</h1>
   <div class="questao-box" ng-repeat="question in questions | limitTo : quantity">
-    <form name="{{question.id}}">
+    <form name="formQuestion">
       <div class="questao-enunciado">
         <h4>
           <a ng-href="question/{{question.id}}">{{question.heading}}</a>
@@ -12,24 +12,37 @@
       </div>
       <div class="questao-VouF" ng-if="question.idt === 'V' ">
         <div class="" ng-repeat="opc in question.alternatives">
-          <select id="{{'' + question.id + $index}}" ng-model="question.selectedValue" ng-value="{{$index}}" name="{{question.id}}" class= "TorFquest" required>
-            <option value="V">V</option>
-            <option value="F">F</option>
-          </select>
-          <label for="{{'' + question.id + $index}}">{{opc.assertive}}</label>
+          <p>
+            <select id="{{'' + question.id + $index}}" ng-model="opc.selectedValue"
+                    name="{{question.id}}"
+                    class="TorFquest"
+                    required>
+              <option ng-value="true">V</option>
+              <option ng-value="false">F</option>
+            </select>
+            <label for="{{'' + question.id + $index}}">{{opc.assertive}}</label>
+          </p>
         </div>
-        <p><button ng-click="confirmQuestion(question.id)" ng-disabled="question.selectedValue == undefined" type="submit" class="button">Enviar</button>{{question.status}}</p>
+        <p><button ng-click="formQuestion.$valid && confirmQuestion(question.id)"
+                   ng-class="formQuestion.$invalid ? 'disabled' : ''"
+                   type="submit"
+                   class="button">Enviar</button>{{question.status}}</p>
       </div>
       <div class="questao-opcoes" ng-if="question.idt === 'M' ">
         <div class="" ng-repeat="opc in question.alternatives">
-          <input type="radio" id="{{'' + question.id + $index}}" ng-model="question.selectedValue" ng-value="{{$index}}" name="{{question.id}}" required>
+          <input type="radio"
+                 id="{{'' + question.id + $index}}"
+                 ng-model="question.selectedValue"
+                 ng-value="{{$index}}"
+                 name="{{question.id}}"
+                 required>
           <label for="{{'' + question.id + $index}}">{{opc}}</label>
         </div>
         <p><button ng-click="confirmQuestion(question.id)" ng-disabled="question.selectedValue == undefined" type="submit" class="button">Enviar</button>{{question.status}}</p>
       </div>
       <div class="questao-texto" ng-if="question.idt === 'A' ">
         <textarea name="answer" rows="3" cols="80" required></textarea>
-        <button ng-click="confirmQuestion(question.id)" type="submit" class="button">Enviar</button>
+        <button ng-click="formQuestion.$valid && confirmQuestion(question.id)" type="submit" class="button" ng-class="formQuestion.$invalid ? 'disabled' : ''">Enviar</button>
       </div>
     </form>
   </div>
