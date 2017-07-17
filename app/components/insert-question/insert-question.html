@@ -2,11 +2,11 @@
 <!-- http://jsfiddle.net/TheSharpieOne/Xku9z/ -->
 <div class="insert-question-box">
   <h1>Inserir Questão</h1>
-    <select ng-model="question.domainId" ng-change="getModules(question.domainId)" ng-options="domain.domainId as domain.domainName for domain in domainsList">
-      <option value="" selected disabled hidden>Escolha o Domínio ▼</option>
+    <select ng-model="question.domainId" ng-change="getModules(question.domainId)" ng-options="domain.id as domain.name for domain in domainsList">
+      <option value="" selected disabled>Escolha o Domínio ▼</option>
     </select>
-    <select ng-disabled="!(!!question.domainId)" ng-model="question.selectedModuleId" ng-options="module.moduleId as module.moduleName for module in modulesList">
-      <option value="" selected disabled>---</option>
+    <select ng-disabled="!(!!question.domainId)" ng-model="question.selectedModuleId" ng-options="module.id as module.name for module in modulesList">
+      <option value="" selected disabled>Escolha o Módulo ▼</option>
     </select>
     <textarea ng-model="question.heading" rows="3" cols="80" placeholder="Enunciado da Questão"></textarea>
     <div id="choose-identity">
@@ -28,4 +28,5 @@
       </div>
     </div>
     <a ng-click="submitQuestion()" class="button">Adicionar</a>
+    {{question}}
 </div>

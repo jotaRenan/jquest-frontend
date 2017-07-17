@@ -38,6 +38,6 @@
   // Populates Modules dropdown after a domain is selected
   // TODO: change values of modulesList after request to backend
   $scope.getModules = (domainId) => {
-    $scope.modulesList = $scope.domainsList.find( domainInList => domainInList.domainId === domainId).modules;
+    $scope.modulesList = $scope.domainsList.find( domainInList => domainInList.id === domainId).modules;
   }
 })
