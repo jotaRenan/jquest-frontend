@@ -20,10 +20,6 @@
      })
       .then(response => {
         $scope.msg = `Domínio removido.`;
-      }, response => {
-          $scope.msg = `Impossível remover domínio.
-                        Há módulos associados a ele.`;
-          alert($scope.msg);
       });
    };
    $scope.insertDomain = () => {
@@ -42,7 +38,7 @@
      const payload = {id, name, description} = $scope.selectedDomain;
      $http({
        method: 'POST',
-       url: `http://localhost:8080/JQuestWebApplication/EditDomainServlet`,
+       url: `http://localhost:8080/JQuestWebApplication/UpdateDomainServlet`,
        data: {id, name, description},
      })
        .then(response => {
