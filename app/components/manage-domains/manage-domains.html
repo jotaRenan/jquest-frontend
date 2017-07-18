@@ -11,7 +11,7 @@
             ng-options="domain.id as domain.name for domain in domains"
             size="10" required>
     </select>
-    <button ng-disabled="domainsForm.$invalid" ng-click="domainsForm.$valid && deleteDomain()" type="submit" name="button">Excluir</button>
+    <button ng-disabled="domainsForm.$invalid" ng-click="domainsForm.$valid && deleteDomain()" type="button" name="button">Excluir</button>
 
   </form>
 
@@ -22,7 +22,14 @@
         <label for="edit-domain-name">Editar nome</label>
         <input id="edit-domain-name" type="text" name="domainName"
                ng-value="selectedDomain.name || 'Selecione um domínio' "
-               ng-model="editDomainName"
+               ng-model="selectedDomain.name"
+               ng-disabled="!domainsForm.$valid">
+      </div>
+      <div class="item">
+        <label for="edit-domain-description">Editar Descrição</label>
+        <input id="edit-domain-description" type="text" name=""
+               ng-value="selectedDomain.description || 'Nova Descrição'"
+               ng-model="selectedDomain.description"
                ng-disabled="!domainsForm.$valid">
       </div>
     </div>
@@ -49,5 +56,4 @@
     <button type="submit" ng-click="ctrl.insertdomainForm.$valid && insertDomain()" class="button" ng-class="ctrl.insertDomainForm.$invalid ? 'disabled' : '' ">Inserir</button>
   </form>
   <!-- TODO: Style the message -->
-  {{msg}}
 </section>
