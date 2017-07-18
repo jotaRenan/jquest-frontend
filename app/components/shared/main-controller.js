@@ -3,7 +3,9 @@
 .controller('MainCtrl', function($scope, $log, $http, $location, $rootScope) {
   // TODO: add verification
   const temp = sessionStorage.getItem('hideLogin');
+  $scope.userCredentials = JSON.parse(sessionStorage.getItem('userInfo'));
   $scope.hideLogin = !!temp;
+
   $scope.close = () => {
     $scope.hideLogin = true;
     sessionStorage.setItem('hideLogin', 'true');
@@ -33,9 +35,10 @@
         $location.path('/');
         $scope.credential = undefined;
       }, response => {
-        if (response.status === 404) {
-          // TODO: msg erro de login
+        if (response.status === 404 || 403 === response.status) {
           $scope.loginMessage = "Login inválido.";
+        } else {
+          $scope.loginMessage = "Coisas sinistras aconteceram do outro lado. Nos desculpe.";
         }
       });
   }
