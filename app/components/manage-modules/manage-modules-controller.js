@@ -20,7 +20,8 @@
        method: 'POST',
        url: `http://localhost:8080/JQuestWebApplication/DeleteModuleServlet`,
        data: payload,
-     })
+     });
+     // TODO: refresh data after request
    };
    $scope.updateModule = () => {
      // sweet ES6 destructuring
@@ -30,6 +31,16 @@
        url: `http://localhost:8080/JQuestWebApplication/UpdateModuleServlet`,
        data: payload,
      });
+     // TODO: refresh data after request
+   }
+   $scope.createModule = () => {
+     const payload = {domainId, name, description} = $scope.newModule;
+     $http({
+       method: 'POST',
+       url: `http://localhost:8080/JQuestWebApplication/CreateModuleServlet`,
+       data: payload,
+     });
+     // TODO: refresh data after request
    }
    $scope.updateFields = () => {
      $scope.selectedModule = $scope.modules.find(m => m.id == $scope.selectedModuleId);

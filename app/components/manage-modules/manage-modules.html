@@ -36,6 +36,9 @@
                   ng-value="domain.id"
                   ng-selected="domain.id == selectedModule.id">{{domain.name}}</option>
         </select>
+        <label for="edit-module-description">Editar Descrição</label>
+        <input id="edit-module-description" type="text" ng-model="selectedModule.description"
+                  ng-value="selectedModule.description || 'Insira descrição'" ng-disabled="!modulesForm.$valid" required>
       </div>
     </div>
   </form>
@@ -49,19 +52,24 @@
         <label for="insert-module-name">Nome do novo Módulo</label>
         <input id="insert-module-name" type="text" name="moduleName"
                placeholder="Insira nome"
-               ng-model="newModuleName"
+               ng-model="newModule.name"
                required>
       </div>
       <div class="item">
-        <label for="select-domain">Editar domínio</label>
+        <label for="select-domain">Escolher domínio</label>
         <select id="select-domain" class="" name="select-domain"
           ng-options="domain.id as domain.name for domain in domains"
-          ng-model="newModuleDomain"
+          ng-model="newModule.domainId"
           required>
           <option value="" disabled selected>Selecione um domínio de conhecimento</option>
         </select>
+        <label for="insert-module-description">Insira descriçao</label>
+        <input id="insert-module-description" name="" type="text" value=""
+                placeholder="Insira Descriçao"
+                ng-model="newModule.description"
+                required>
       </div>
     </div>
-    <button type="submit" ng-click="" class="button" ng-class="ctrl.insertModuleForm.$invalid ? 'disabled' : '' ">Confirmar alterações</button>
+    <button type="submit" ng-click="createModule()" class="button" ng-class="ctrl.insertModuleForm.$invalid ? 'disabled' : '' ">Confirmar alterações</button>
   </form>
 </section>
