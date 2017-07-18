@@ -15,7 +15,7 @@
      //Deletes domain whose id is registered at $scope.selectedDomain;
      $http({
        method: 'POST',
-       url : `http://localhost:8080/JQuestWebApplication/RemoveDomainServlet`,
+       url : `http://localhost:8080/JQuestWebApplication/DeleteDomainServlet`,
        data: {id: $scope.selectedDomain.id },
      })
       .then(response => {
