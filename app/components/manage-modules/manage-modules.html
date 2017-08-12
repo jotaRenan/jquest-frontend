@@ -22,7 +22,7 @@
         <label for="edit-module-name">Editar nome</label>
         <input id="edit-module-name" type="text" name="moduleName"
                ng-value="selectedModule.name || 'Selecione um módulo' "
-               ng-model="editModuleName"
+               ng-model="selectedModule.name"
                ng-disabled="!modulesForm.$valid">
       </div>
       <div class="item">
