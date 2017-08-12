@@ -58,7 +58,14 @@ app.config(['$routeProvider','$locationProvider',
         templateUrl: 'templates/my-discussions.html',
         controller: 'MyDiscussionsCtrl',
       })
-
+      .when('/domains', {
+        templateUrl: './app/components/list-domains/list-domains.html',
+        controller: 'ListDomainsCtrl',
+      })
+      .when('/modules/:domainId/:moduleId', {
+        templateUrl: './app/components/list-modules/list-modules.html',
+        controller: 'ListModulesCtrl',
+      })
       /*
       // Rota para a página My Discussions
       .when('/my-discussions', {

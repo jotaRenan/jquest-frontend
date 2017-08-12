@@ -1,0 +1,9 @@
+<section>
+  <h1>Lista de Domínios e Módulos</h1>
+  <div class="domain" ng-repeat="domain in domains">
+    <h4>{{domain.name}}</h4>
+    <ul>
+      <li ng-repeat="module in domain.modules"><a ng-href=" 'list-modules/' + domain.id' + '/' + module.id "></a>{{module.name}}</li>
+    </ul>
+  </div>
+</section>
