@@ -6,7 +6,10 @@
        method: 'GET',
        url: `http://localhost:8080/JQuestWebApplication/GetQuestionsServlet`
    })
-    .then( response => $scope.questions = response.data);
+    .then( response => {
+       $scope.questions = response.data;
+       $scope.questions.forEach(q => q.correctIndex -= 1);
+  });
 
   $scope.confirmQuestion = (questionId) => {
     const MAX_QUESTIONS = 10;
