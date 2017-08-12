@@ -5,7 +5,7 @@
       <nav id="nav">
         <a href="manage-modules">Módulos</a>
         <a href="manage-domains">Domínios</a>
-        <a href="user-profile"><i class="fa fa-user" aria-hidden="true"></i> Meu Perfil</a>
+        <a ng-href="user-profile/{{userCredentials.id}}"><i class="fa fa-user" aria-hidden="true"></i> Meu Perfil</a>
         <a href="insert-question">Questões</a>
         <a href="question-correction">Corrigir</a>
         <a ng-click="logout()" ng-if="isUserLogged">Sair</a>

@@ -1,6 +1,6 @@
  angular.module('jQuest')
 
- .controller('UserProfileCtrl', function($scope, $routeParams) {
+ .controller('UserProfileCtrl', function($scope, $routeParams, $http) {
   // TODO: send the requests to the backend so it returns data of a user given its Id ($routeParams.userId)
   $scope.user = {
     username : 'jotaRenan',
@@ -11,7 +11,11 @@
       { id : 1008, shortDesc : 'Como faço para ganhar seguidores?'}
     ],
     latestPosts: [],
-  }
+  };
+  $http({
+    method: 'GET',
+    url: `http://localhost:8080/JQuestWebApplication/GetUserByIdServlet?id=${$routeParams.userId}`,
+  }).then(response => $scope.user = response.data);
   $scope.quantity = 3;
 
   let ctx = document.querySelector("#progressChart");
@@ -26,7 +30,7 @@
                 backgroundColor: [
                     'rgba(75, 192, 192, 0.5)',
                     'rgba(255, 99, 132, 0.5)'
-  
+
                 ],
                 borderColor: [
                     'rgba(75, 192, 192, 0.7)',
@@ -46,7 +50,7 @@
                 }],
                 yAxes: [{
                     ticks: {
-                        
+
                     }
                 }]
             },
