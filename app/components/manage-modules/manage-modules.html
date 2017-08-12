@@ -34,7 +34,7 @@
           <option value="" hidden selected>Selecione um módulo</option>
           <option ng-repeat="domain in domains"
                   ng-value="domain.id"
-                  ng-selected="domain.id == selectedModule.id">{{domain.name}}</option>
+                  ng-selected="domain.id == selectedModule.domainId">{{domain.name}}</option>
         </select>
         <label for="edit-module-description">Editar Descrição</label>
         <input id="edit-module-description" type="text" ng-model="selectedModule.description"
