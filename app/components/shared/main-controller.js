@@ -9,14 +9,15 @@
   $scope.close = () => {
     $scope.hideLogin = true;
     sessionStorage.setItem('hideLogin', 'true');
-  }
+  };
 
   $scope.logout = () => {
     sessionStorage.removeItem('loginFlag');
+    sessionStorage.removeItem('userInfo');
     sessionStorage.setItem('hideLogin', 'false');
     $scope.hideLogin = false;
     $rootScope.isUserLogged = false;
-  }
+  };
 
   $scope.login = () => {
     if (sessionStorage.getItem('loginFlag')) {
@@ -26,7 +27,7 @@
          method: 'POST',
          url: `http://localhost:8080/JQuestWebApplication/Login`,
          data: {email: $scope.credential.email, password: $scope.credential.password},
-     })
+    })
       .then(response => {
         sessionStorage.setItem('userInfo', JSON.stringify(response.data));
         sessionStorage.setItem('hideLogin', 'true');
@@ -34,12 +35,13 @@
         $rootScope.isUserLogged = true;
         $location.path('/');
         $scope.credential = undefined;
-      }, response => {
+      })
+      .catch( response => {
         if (response.status === 404 || 403 === response.status) {
-          $scope.loginMessage = "Login inválido.";
+          $scope.loginMessage = 'Login inválido.';
         } else {
-          $scope.loginMessage = "Coisas sinistras aconteceram do outro lado. Nos desculpe.";
+          $scope.loginMessage = 'Coisas sinistras aconteceram do outro lado. Nos desculpe.';
         }
       });
-  }
-})
+  };
+});
