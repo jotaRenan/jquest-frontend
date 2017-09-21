@@ -29,6 +29,7 @@
          data: {email: $scope.credential.email, password: $scope.credential.password},
     })
       .then(response => {
+        $scope.userCredentials = response.data;
         sessionStorage.setItem('userInfo', JSON.stringify(response.data));
         sessionStorage.setItem('hideLogin', 'true');
         $scope.hideLogin = true;
