@@ -16,3 +16,8 @@
 .flex-item img {
   width: 100%;
 }
+
+.progressChart {
+  width: 200px;
+  height: 200px;
+}
